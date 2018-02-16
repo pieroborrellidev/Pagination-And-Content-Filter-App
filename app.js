@@ -41,16 +41,19 @@ function searchStudent() {
     $('button').on('click', function() {
     const $filter = $('input').val(); 
     
-        
-    $students.each(function() {
-         if ($(this).text().search(new RegExp($filter, "i")) < 0) {
-                $(this).fadeOut();
-        
-         } else {
-                $(this).show();
-            }
+    if($filter.length === 0) {
+        goToPage(0);
+        // fadeOut() and show() below no longer run
+      } else {
+        $students.each(function() {
+           if ($(this).text().search(new RegExp($filter, "i")) < 0) {
+             $(this).fadeOut();
+           } else {
+             $(this).show();
+           }
         });
-    });
+      }
+    });  
 
 }
 
