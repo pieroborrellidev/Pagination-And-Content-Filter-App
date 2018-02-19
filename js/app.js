@@ -21,7 +21,12 @@ function createPagination() {
         $(".pagination ul").append($("<li><a href = '#'>" + i + "</a></li>"));
     
     
+    $(".pagination > ul > li:first-child > a").attr("class", "active");
     $(".pagination ul li a").on("click", function(e) {
+        
+      // add the active class to the selected page    
+      $(this).parent().parent().children().children().removeClass("active");
+      $(this).addClass("active");
     goToPage(parseInt($(this)[0].text) - 1); 
         
     });    
@@ -38,12 +43,14 @@ function goToPage(pageNum) {
 
 function searchStudent() {
     $(".page-header").append($('<div class = "student-search"><input placeholder="Search for students...">  <button>Search</button> </div>')); 
-    $('button').on('click', function() {
+    
+    $('button').on('click', () => {
     const $filter = $('input').val(); 
     
+        
+        
     if($filter.length === 0) {
         goToPage(0);
-        // fadeOut() and show() below no longer run
       } else {
         $students.each(function() {
            if ($(this).text().search(new RegExp($filter, "i")) < 0) {
