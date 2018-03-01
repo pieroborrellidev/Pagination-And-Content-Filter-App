@@ -12,7 +12,7 @@ function init() {
     
 }
  
-
+// create the pagination indexes for the page
 function createPagination() {
     
     $(".page").append($("<div class='pagination'><ul></ul></div>"));
@@ -31,7 +31,7 @@ function createPagination() {
         
     });    
 }
-
+// go to the page selected by the user
 function goToPage(pageNum) {
     const start = showPerPage * pageNum;
     const end = start + showPerPage; 
@@ -41,6 +41,7 @@ function goToPage(pageNum) {
     
 }
 
+// search student based on text input
 function searchStudent() {
     $(".page-header").append($('<div class = "student-search"><input placeholder="Search for students...">  <button>Search</button> </div>')); 
     
